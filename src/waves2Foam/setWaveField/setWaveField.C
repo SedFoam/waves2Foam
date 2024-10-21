@@ -171,7 +171,8 @@ void setWaveField::correct()
 
         // If size is less than 4, then one cannot evaluate centre/magnitude
         // without getting an floating point exception error
-        if (lc.ccNeg().size() >= 4)
+        // Also make a check on the size of the cut volume
+        if (lc.ccNeg().size() >= 4 && lc.magNeg() > 1e-7*V[celli])
         {
             UTarget = waveProps_->U(lc.centreNeg(), U_.db().time().value());
             pTarget = waveProps_->pExcess(lc.centreNeg(), U_.db().time().value());

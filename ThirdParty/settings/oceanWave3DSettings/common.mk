@@ -21,6 +21,6 @@ LIBDIRS  = -L$(PWD)/../lib
 LINLIB   = -ltmglib_gfortran -llapack_gfortran  -lskit_gfortran -lblas
 DBFLAGS  = -pg -g -O0 -fPIC -fbounds-check -ffpe-trap=invalid,zero,overflow -ffree-line-length-none 
 OPTFLAGS = -O3 -fPIC -ffpe-trap=invalid,zero,overflow -ffree-line-length-none -fstack-protector-all
-SHLIBFLAGS  = -shared -O2 -fPIC -fbounds-check -ffpe-trap=invalid,zero,overflow -ffree-line-length-none -fstack-protector-all
+SHLIBFLAGS  = -shared -O2 -fPIC -fallow-argument-mismatch -fbounds-check -ffpe-trap=invalid,zero,overflow -ffree-line-length-none -fstack-protector-all
 
 

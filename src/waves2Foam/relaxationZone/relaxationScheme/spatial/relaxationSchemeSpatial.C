@@ -120,7 +120,7 @@ void relaxationSchemeSpatial::correct()
 
             dividePolyhedral(point::zero, vector::one, lc);
 
-            if (lc.ccNeg().size() >= 4)
+            if (lc.ccNeg().size() >= 4 && lc.magNeg() > 1e-7*V[cellNo])
             {
                 UTarget = waveProps_->U(lc.centreNeg(), mesh_.time().value());
                 alphaTarget = lc.magNeg()/V[cellNo];
