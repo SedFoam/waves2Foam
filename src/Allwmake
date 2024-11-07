@@ -65,8 +65,11 @@ then
     elif [ "$WM_PROJECT_VERSION_NUMBER" -lt "2206" ]
     then
         (cd waves2FoamSampling1712  ; wmake libso)
-    else
+    elif [ "$WM_PROJECT_VERSION_NUMBER" -lt "2406" ]
+    then
         (cd waves2FoamSampling2206  ; wmake libso)
+    else
+        (cd waves2FoamSampling2406  ; wmake libso)
     fi
 else
     if [ "$WM_PROJECT_VERSION_NUMBER" -lt "400" ]
