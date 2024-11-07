@@ -1,9 +1,9 @@
 name: build_and_test
 on:
   push:
-    branches: ['main']
+    branches: ['master']
   pull_request:
-    branches: ['main']
+    branches: ['master']
 # Warning : schedule is only for default branch
 #  schedule:
 #    - cron: '0 3 * * 1'
