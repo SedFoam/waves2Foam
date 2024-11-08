@@ -37,7 +37,7 @@ jobs:
     runs-on: ubuntu-latest
     container: 
       image: opencfd/openfoam-dev:2406
-    needs: [build, checkstyle, checkpep8]
+    needs: [build, checkpep8]
     defaults:
       run:
         shell: bash
