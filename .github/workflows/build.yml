@@ -63,6 +63,7 @@ jobs:
       - name: waves2foam periodicSolitary
         run: |
           shopt -s expand_aliases && source /openfoam/bash.rc && 
+          sudo chmod a+rwX bin/prepareCase.sh &&
           cd tutorials/waveFoam/periodicSolitary && 
           sudo chmod -R a+rwX ../* &&
           runuser -u sudofoam -- ./Allrun
