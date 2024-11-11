@@ -6,7 +6,9 @@ then
     chmod a+x ./../bin/bashrc
 fi
 
-. ../bin/bashrc
+cd ..
+. bin/bashrc
+cd -
 
 # Take care of the differences in the options, which arose between OF21 and OF22.
 rm -f $WAVES_SRC/Make/options
