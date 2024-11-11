@@ -65,7 +65,7 @@ jobs:
           shopt -s expand_aliases && source /openfoam/bash.rc && 
           cd tutorials/waveFoam/periodicSolitary && 
           sudo chmod -R a+rwX ../* &&
-          runuser -u sudofoam -- ./Allrun > /dev/null &&
+          runuser -u sudofoam -- ./Allrun &&
 
   checkpep8:
     runs-on: ubuntu-latest
