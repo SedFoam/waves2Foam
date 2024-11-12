@@ -1,0 +1,49 @@
+name: build_and_test
+on:
+  push:
+    branches: ['master']
+  pull_request:
+    branches: ['master']
+# Warning : schedule is only for default branch
+#  schedule:
+#    - cron: '0 3 * * 1'
+defaults:
+  run:
+    shell: bash
+jobs:
+
+  build:
+    runs-on: ubuntu-latest
+    container: opencfd/openfoam-dev:2406
+    steps:
+      - name: install git
+        run: |
+          sudo apt-get update && sudo apt-get install -y git &&
+          sudo apt-get -y install libgsl-dev gsl-bin
+      - name: Check out repository code
+        uses: actions/checkout@v3
+        with:
+          submodules: recursive
+      - name: Build waves2Foam
+        run: |
+          shopt -s expand_aliases && source /openfoam/bash.rc && 
+          ./Allwmake
+      - uses: actions/upload-artifact@v4.4.3
+        with:
+          name: waves2foam-binary
+          path: /github/home/OpenFOAM
+
+  checkpep8:
+    runs-on: ubuntu-latest
+    steps:
+      - name: install pycodestyle
+        run: |
+          sudo pip3 install pycodestyle
+      - name: Check out repository code
+        uses: actions/checkout@v3
+        with:
+          submodules: recursive
+      - name: Python Style Checker
+        run: |
+          pycodestyle tutorials  --max-line-length=120
+
